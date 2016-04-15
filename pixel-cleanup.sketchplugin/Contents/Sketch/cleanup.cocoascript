@@ -1,0 +1,91 @@
+var onRun = function (context) {
+  var doc = context.document;
+  var selection = context.selection;
+
+  var artboard = doc.currentPage().currentArtboard()
+
+  for (var i = 0; i < selection.count(); i++) {
+    var layer = selection[i];
+
+    cleanup(layer);
+    var parentGroup = findGroupForLayer(layer);
+
+    if (parentGroup) {
+      cleanupGroup(parentGroup);
+    }
+    doc.currentPage.deselectAllLayers();
+    selection.select_byExpandingSelection(true,true);
+  }
+
+  function cleanup(toClean){
+    if (toClean.isLine()) {
+      log("cleaning Line " + toClean));
+
+      cleanupLine(toClean);
+    }else{
+      log("cleaning Group" + toClean));
+      cleanupGroup(toClean);
+      if(toClean && toClean.isKindOfClass(MSLayerGroup)){
+        for (var z = 0; z < toClean.containedLayersCount(); z++) {
+          var anItem = toClean.layerAtIndex(z);
+          if (anItem != toClean) {
+            cleanup(anItem);
+          }
+        }
+      }
+    }
+  }
+
+
+  //returns nil for artboard
+  function findGroupForLayer(toFind){
+    var parent_layer;
+
+    var isTopmost = layerIsInGroup(toFind, artboard);
+
+    if (!isTopmost) {
+      for(var i=0; i < artboard_layers.length(); i++){
+      	var temp_layer = artboard_layers.objectAtIndex(i);
+      	if (temp_layer.children().indexOf(toFind)) {
+      		parent_layer = temp_layer;
+          // log("Layer is one of the children!" + temp_layer);
+          // log ("Layers: " + temp_layer.layers());
+          layerIsInGroup(toFind, parent_layer);
+      	}
+      }
+      log("Parent = " + parent_layer);
+    }
+    return parent_layer;
+  }
+
+  function layerIsInGroup(toFind, inGroup){
+    var layers = inGroup.layers();
+    var isFound = false;
+    for (var k = 0; k < layers.count(); k++) {
+      // log(layers.objectAtIndex(k));
+      if (layers.objectAtIndex(k) == toFind) {
+        isFound = true;
+      }
+    }
+    if (!isFound){
+      log("Nested more than one layer deep though");
+    }else{
+      log("Single Group Deep");
+    }
+    return isFound;
+  }
+
+  function cleanupGroup(shapeGroup){
+    var aFrame = shapeGroup.frame();
+    shapeGroup.frame = MSRect.rectWithRect(NSMakeRect(Math.round(aFrame.x()), Math.round(aFrame.y()), Math.round(aFrame.width()), Math.round(aFrame.height())));
+
+  }
+
+  function cleanupLine(shapeGroup){
+    shapeGroup.x1 = Math.round(shapeGroup.x1());
+    shapeGroup.x2 = Math.round(shapeGroup.x2());
+    shapeGroup.y1 = Math.round(shapeGroup.y1());
+    shapeGroup.y2 = Math.round(shapeGroup.y2());
+  }
+
+}

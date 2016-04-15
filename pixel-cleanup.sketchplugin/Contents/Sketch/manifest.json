@@ -1,0 +1,24 @@
+{
+  "name": "Pixel Cleanup",
+  "description": "Turn all of those pesky partial pixels into the real deal.",
+  "author": "Avery Bloom",
+  "homepage": "https://github.com/swiadek/pixel-perfecter-sketch-plugin",
+  "version": 0.5,
+  "identifier": "com.wearestack.com.sketch-cleanup",
+  "compatibleVersion": 3.4,
+  "bundleVersion": 1,
+  "commands": [
+    {
+      "name": "Cleanup Pixel Placement",
+      "identifier": "cleanup",
+      "shortcut": "cmd alt p",
+      "script": "cleanup.cocoascript",
+    },
+
+  ],
+  "menu": {
+    "items": [
+      "cleanup"
+    ]
+  }
+}
