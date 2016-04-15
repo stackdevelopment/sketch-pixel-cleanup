@@ -6,6 +6,7 @@ One of the best things about Sketch is having your designs be pixel perfect. How
 This beta plugin will round all of your pixels to whole pixels.
 
 It works well for the following:
+
 1. Lines
 1. Rectangles
 1. Groups
