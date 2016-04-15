@@ -15,12 +15,12 @@ It works well for the following:
 
 Working but not extensively tested:
 1. Symbols
-2. Complex paths
+1. Complex paths
 
 Untested
 1. Images
-2. Extensive edge cases such as scaling + rotation. 
-3. Anything not listed above
+1. Extensive edge cases such as scaling + rotation. 
+1. Anything not listed above
 
 It may work with others, but I haven't tested it fully.
 
