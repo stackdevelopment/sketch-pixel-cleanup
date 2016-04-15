@@ -9,8 +9,18 @@ It works well for the following:
 
 1. Lines
 1. Rectangles
+1. Circles
 1. Groups
 1. Nested versions of these things
+
+Working but not extensively tested:
+1. Symbols
+2. Complex paths
+
+Untested
+1. Images
+2. Extensive edge cases such as scaling + rotation. 
+3. Anything not listed above
 
 It may work with others, but I haven't tested it fully.
 
