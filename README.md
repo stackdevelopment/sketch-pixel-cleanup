@@ -11,7 +11,7 @@ It works well for the following:
 1. Rectangles
 1. Circles
 1. Groups
-1. Nested versions of these things
+1. Nested groups
 
 Working but not extensively tested:
 
@@ -22,7 +22,10 @@ Untested:
 
 3. Images
 3. Extensive edge cases such as scaling + rotation. 
+3. Compound shapes
+3. Masks
 3. Anything not listed above
+
 
 It may work with others, but I haven't tested it fully.
 
