@@ -35,9 +35,11 @@ It may work with others, but I haven't tested it fully.
 3. Bask in the whole pixel glory. 
 
 ### Things To Know
-> If a shape is in a group, it is possible that `both the shape, and the group itself may have been positioned\shaped at partial pixels`. 
+• If a shape is in a group, it is possible that `both the shape, and the group itself may have been positioned\shaped at partial pixels`. 
+
 If you do select a shape in a group and run the command, it will adjust all parent groups and the shape, but it will not not automatically adjust the other sibling shapes. It's easy enough to add that as a feature, but I wanted to avoid unintended consequences. Sometimes you really do mean to have partial pixel placement.
-> If you select a group and run the command this will clean up `the group AND all of its children, and all sub groups, and all of THEIR children`
+
+• If you select a group and run the command this will clean up `the group AND all of its children, and all sub groups, and all of THEIR children`
 
 Note: In Sketch, the inspector doesn't instantly update refresh when these properties are changed, so though things will move correctly, you have to deselect/reselect to see the change in the inspector. I didn't auto-deselect so you wouldn't loose your initial selection. 
 
