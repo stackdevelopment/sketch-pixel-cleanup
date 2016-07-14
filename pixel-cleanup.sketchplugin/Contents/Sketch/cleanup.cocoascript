@@ -13,7 +13,7 @@ var onRun = function (context) {
     if (parentGroup) {
       cleanupGroup(parentGroup);
     }
-    doc.currentPage.deselectAllLayers();
+    doc.currentPage().deselectAllLayers();
     selection.select_byExpandingSelection(true,true);
   }
 
