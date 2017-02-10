@@ -13,9 +13,10 @@ var onRun = function (context) {
     if (parentGroup) {
       cleanupGroup(parentGroup);
     }
-    doc.currentPage().deselectAllLayers();
-    selection.select_byExpandingSelection(true,true);
-  }
+    doc.currentPage.deselectAllLayers();
+    context.document.currentPage().deselectAllLayers();
+    selection[i].select_byExpandingSelection(true, true);
+    }
 
   function cleanup(toClean){
     if (toClean.isLine()) {
@@ -82,10 +83,12 @@ var onRun = function (context) {
   }
 
   function cleanupLine(shapeGroup){
-    shapeGroup.x1 = Math.round(shapeGroup.x1());
-    shapeGroup.x2 = Math.round(shapeGroup.x2());
-    shapeGroup.y1 = Math.round(shapeGroup.y1());
-    shapeGroup.y2 = Math.round(shapeGroup.y2());
+    var thickness = shapeGroup.style().borders()[0].thickness();
+     var thickCenter = (thickness%2)/2;
+     shapeGroup.x1 = (shapeGroup.x1()%1 != thickCenter) ? Math.round(shapeGroup.x1())+thickCenter : shapeGroup.x1();
+     shapeGroup.x2 = (shapeGroup.x2()%1 != thickCenter) ? Math.round(shapeGroup.x2())+thickCenter :shapeGroup.x2() ;
+     shapeGroup.y1 = (shapeGroup.y1()%1 != thickCenter) ? Math.round(shapeGroup.y1())+thickCenter : shapeGroup.y1();
+     shapeGroup.y2 = (shapeGroup.y2()%1 != thickCenter) ? Math.round(shapeGroup.y2())+thickCenter : shapeGroup.y2()
   }
 
 }
