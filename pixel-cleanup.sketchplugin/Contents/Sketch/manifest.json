@@ -12,8 +12,8 @@
       "name": "Cleanup Pixel Placement",
       "identifier": "cleanup",
       "shortcut": "cmd alt p",
-      "script": "cleanup.cocoascript",
-    },
+      "script": "cleanup.cocoascript"
+    }
 
   ],
   "menu": {
