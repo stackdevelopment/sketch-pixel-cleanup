@@ -1,5 +1,7 @@
 # Pixel Cleanup For Sketch
 
+- This repository is no longer supported! Please feel free to fork and update if it isn't working with your version of Sketch.
+
 One of the best things about Sketch is having your designs be pixel perfect. However, there are a variety of things that can end up with pesky portion-of-a-pixel positioning.
 
 This beta plugin will round all of your pixels to whole pixels.
